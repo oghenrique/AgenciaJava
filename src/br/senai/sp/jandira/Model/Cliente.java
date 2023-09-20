@@ -7,21 +7,21 @@ public class Cliente {
 
     public long cpf, rg, telefone;
     Scanner scanner = new Scanner(System.in);
-    public void CadastrarCliente(){
+    public void cadastrarCliente(){
 
         System.out.println("---------------- Cadastro Cliente ---------------");
-        System.out.println("Informe seu nome:");
+        System.out.print("Informe seu nome:");
         nome = scanner.nextLine();
-        System.out.println("Informe seu endereço:");
+        System.out.print("Informe seu endereço:");
         endereco = scanner.nextLine();
-        System.out.println("Informe seu CPF: ");
+        System.out.print("Informe seu CPF: ");
         cpf = scanner.nextLong();
-        System.out.println("Informe seu RG: ");
+        System.out.print("Informe seu RG: ");
         rg = scanner.nextLong();
-        System.out.println("Informe seu telefone: ");
+        System.out.print("Informe seu telefone: ");
         telefone  = scanner.nextLong();
         scanner.nextLine();
-        System.out.println("-------------- Cadastro Finalizado --------------");
+        System.out.print("-------------- Cadastro Finalizado --------------");
 
     }
 
