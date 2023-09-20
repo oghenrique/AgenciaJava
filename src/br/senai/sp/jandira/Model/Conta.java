@@ -7,6 +7,12 @@ public class Conta {
     private double saldo = 8640;
 
     public void realizarSaque(double valorSaque){
+
+        if(valorSaque > this.saldo){
+            valorSaque = 0;
+            System.out.println("Não foi possível realizar o saque. Valor máximo permitido" + this.saldo);
+        }
+
         this.saldo -= valorSaque;
         System.out.print("Seu saldo atual é: " + this.saldo);
     }
@@ -19,6 +25,6 @@ public class Conta {
 
     public void consultarSaldo(){
         System.out.print("Seu salo atual é:" + this.saldo);
-    }
 
+    }
 }
