@@ -5,8 +5,9 @@ import java.util.Scanner;
 public class Menu {
 
     Scanner scanner = new Scanner(System.in);
-    Cliente referenciaCliente  = new Cliente();
+    Cliente referenciaCliente = new Cliente();
     Conta referenciaConta = new Conta();
+
     public void executarMenu() {
 
         boolean continuar = true;
@@ -41,7 +42,7 @@ public class Menu {
 
                     Cliente clienteTitular = referenciaCliente.pesquisarCliente(cpfTitular);
 
-                    if(clienteTitular != null) {
+                    if (clienteTitular != null) {
                         Conta conta = new Conta();
                         conta.gerarConta(clienteTitular);
                         referenciaConta.adicionarContaList(conta);
@@ -56,12 +57,12 @@ public class Menu {
                 case 3:
 
                     System.out.print("Informe o CPF do Titular: ");
-                    long cpfConta= scanner.nextLong();
+                    long cpfConta = scanner.nextLong();
                     scanner.nextLine();
 
                     Conta contaPesquisada = referenciaConta.pesquisarConta(cpfConta);
 
-                    if(contaPesquisada != null){
+                    if (contaPesquisada != null) {
                         double saldo = contaPesquisada.getSaldo();
                         System.out.println("O saldo disponivel na conta é: " + saldo);
                     } else {
@@ -72,47 +73,65 @@ public class Menu {
 
                 case 4:
                     System.out.print("Informe o CPF do Titular: ");
-                    long cpfDeposito= scanner.nextLong();
+                    long cpfDeposito = scanner.nextLong();
                     scanner.nextLine();
 
                     Conta contaDeposito = referenciaConta.pesquisarConta(cpfDeposito);
 
-                    if (contaDeposito != null){
+                    if (contaDeposito != null) {
                         System.out.println("Informe o valor para deposito: ");
                         double valorDeposito = scanner.nextDouble();
                         contaDeposito.realizarDeposito(valorDeposito);
-                    }else{
+                    } else {
                         System.out.println("O usuario não possui conta cadastrada...");
                     }
 
                     break;
 
-                    case 5:
-                        System.out.print("Informe o CPF do Titular: ");
-                        long cpfSaque= scanner.nextLong();
-                        scanner.nextLine();
+                case 5:
+                    System.out.print("Informe o CPF do Titular: ");
+                    long cpfSaque = scanner.nextLong();
+                    scanner.nextLine();
 
-                        Conta contaSaque = referenciaConta.pesquisarConta(cpfSaque);
+                    Conta contaSaque = referenciaConta.pesquisarConta(cpfSaque);
 
-                        if (contaSaque != null){
-                            System.out.println("Informe o valor para saque: ");
-                            double valorSaque = scanner.nextDouble();
-                            contaSaque.realizarSaque(valorSaque);
-                        }else{
-                            System.out.println("O usuario não possui conta cadastrada...");
-                        }
+                    if (contaSaque != null) {
+                        System.out.println("Informe o valor para saque: ");
+                        double valorSaque = scanner.nextDouble();
+                        contaSaque.realizarSaque(valorSaque);
+                    } else {
+                        System.out.println("O usuario não possui conta cadastrada...");
+                    }
 
-                        break;
+                    break;
 
                 case 6:
-                    System.out.println("Feature in Development");
-                    break;
+                    System.out.println("Insira o CPF do Titular: ");
+                    long cpfTransferencia = scanner.nextLong();
+                    scanner.nextLine();
+
+                    Conta contaTransferencia = referenciaConta.pesquisarConta(cpfTransferencia);
+
+                    if (contaTransferencia != null) {
+                        System.out.println("Digite o CPF para quem você quer fazer a transferência");
+                        long cpfDestinatario = scanner.nextLong();
+
+                        Conta contaDestinatario = referenciaConta.pesquisarConta(cpfDestinatario);
+
+                        if (contaDestinatario != null) {
+                            System.out.println("Valor da tranferência: ");
+                            double valorTransferencia = scanner.nextDouble();
+
+                            contaTransferencia.realizarTransferencia(contaDestinatario, valorTransferencia);
+                            break;
+                        }
 
 
-                case 7:
-                    continuar = false;
-                    break;
+//                        case 7:
+//                            continuar = false;
+//                            break;
 
+                    }
             }
         }
     }

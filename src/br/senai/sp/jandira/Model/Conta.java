@@ -80,4 +80,16 @@ public class Conta {
 
     }
 
+    public void realizarTransferencia(Conta contaParaTransferencia, double valorTransferencia){
+        if (valorTransferencia > 0 && this.getSaldo() >= valorTransferencia){
+            setSaldo(getSaldo() - valorTransferencia);
+
+            contaParaTransferencia.saldo = contaParaTransferencia.getSaldo() + valorTransferencia;
+            System.out.println("Transferência realizada com sucesso!");
+        }else {
+            System.out.println("Transferência não realizada");
+        }
+
+    }
+
 }
