@@ -115,24 +115,27 @@ public class Menu {
                     if (contaTransferencia != null) {
                         System.out.println("Digite o CPF para quem você quer fazer a transferência");
                         long cpfDestinatario = scanner.nextLong();
+                        scanner.nextLine();
 
                         Conta contaDestinatario = referenciaConta.pesquisarConta(cpfDestinatario);
 
                         if (contaDestinatario != null) {
                             System.out.println("Valor da tranferência: ");
                             double valorTransferencia = scanner.nextDouble();
+                            scanner.nextLine();
 
                             contaTransferencia.realizarTransferencia(contaDestinatario, valorTransferencia);
-                            break;
                         }
 
+                    }
+                        break;
 
-//                        case 7:
-//                            continuar = false;
-//                            break;
+                        case 7:
+                            continuar = false;
+                            break;
 
                     }
             }
         }
     }
-}
+
